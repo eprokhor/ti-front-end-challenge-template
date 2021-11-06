@@ -24,6 +24,16 @@
   color: white;
 }
 
+ul.no-bullets {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+
+li.nowrap {
+  display: inline;
+}
+
 .App-link {
   color: #61dafb;
 }
