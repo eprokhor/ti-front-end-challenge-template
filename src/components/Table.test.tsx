@@ -1,7 +1,6 @@
 import Table from './Table';
 import { act, render } from '@testing-library/react';
 import { mount, ReactWrapper } from 'enzyme';
-import { isGetAccessorDeclaration } from 'typescript';
 
 describe('Table', () => {
   let wrapper: ReactWrapper<any, any, any>;
