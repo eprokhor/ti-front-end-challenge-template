@@ -44,5 +44,21 @@
   },
   "devDependencies": {
     "yarn-upgrade-all": "^0.5.4"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**.*.{ts,tsx}"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "braches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "coverageReporters": [
+      "text"
+    ]
   }
 }

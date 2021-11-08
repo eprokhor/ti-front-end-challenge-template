@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Rows } from './Rows';
-import {
-  getProjectById,
-  getProjects,
-  getProjectVerticals,
-  Project,
-  ProjectVerticals,
-} from '../api/api';
+import { getProjects, getProjectVerticals, Project, ProjectVerticals } from '../api/api';
 
 type Props = {};
 
-const Table: React.FC<Props> = ({}) => {
-  const [rows, setRows] = useState(new Map<string, string[]>());
+const Table: React.FC<Props> = () => {
+  let loadingMap = new Map<string, string[]>();
+  loadingMap.set('LOADING ...', ['LOADING ...']);
+
+  const [rows, setRows] = useState(loadingMap);
 
   useEffect(() => {
     let vToPMap = new Map<string, string[]>();
@@ -47,42 +44,24 @@ const Table: React.FC<Props> = ({}) => {
             }
           }
         });
-        // console.log(vToPMap);
-        // setRows(null);
-        // for (let entry of vToPMap.entries()) {
-        //   console.log(entry);
-        // }
       });
       console.log(vToPMap);
       setRows(vToPMap);
     };
 
-    // const mygetProjectById = async (id: string) => {
-    //   const project: Project = await getProjectByIdFromAPI(id);
-    // };
-
     mygetProjects().then(() => {
       myGetVerticals();
     });
-    // mygetProjectById('');
   }, []);
 
   // Fetch Data from api.
   const getVerticalsFromAPI = async () => {
     let verticals = await getProjectVerticals();
-    // console.log(verticals.data);
     return verticals.data;
   };
 
-  // const getProjectByIdFromAPI = async (id: string) => {
-  //   let project = await getProjectById(id);
-  //   console.log(project.data);
-  //   return project.data;
-  // };
-
   const getProjectsFromAPI = async () => {
     let projects = await getProjects();
-    // console.log(projects.data);
     return projects.data;
   };
 
